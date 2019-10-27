@@ -91,6 +91,14 @@ const PaletteBuilderForm = ( props ) => {
 		props.control.renderContent();
 	}
 
+	const closePicker = ( e ) => {
+		let inputsContainer = props.control.container.find( '.palette-picker-inputs-container' );
+		inputsContainer.show();
+		inputsContainer.find( '.colorpicker-container' ).hide();
+		props.control.container.find( '.add-color' ).hide();
+		e.preventDefault();
+	};
+
 	/**
 	 * Add a row.
 	 *
@@ -100,7 +108,7 @@ const PaletteBuilderForm = ( props ) => {
 	const addRow = ( e ) => {
 		changeItem( getVal().length, {
 			name: 'Custom Color',
-			slug: 'custom-color' + new Date().getTime(),
+			slug: 'custom-color-' + new Date().getTime(),
 			color: '#ffffff'
 		} );
 		e.preventDefault();
@@ -143,9 +151,16 @@ const PaletteBuilderForm = ( props ) => {
 					'border-radius': '4px',
 					border: '1px solid rgba(0, 0, 0, 0.2)',
 				},
+				bottomButtons: {
+					display: 'flex',
+					'justify-content': 'space-between',
+				},
 				removeButton: {
 					color: '#dc3232',
 					'margin-top': '12px'
+				},
+				closeButton: {
+
 				}
 			}
 		} );
@@ -164,7 +179,10 @@ const PaletteBuilderForm = ( props ) => {
 					disableAlpha={ true }
 					onChangeComplete={ handleChangeComplete }
 				/>
-				<button class="button button-link" style={ rowStyles.removeButton } onClick={ removeItem }>Remove</button>
+				<div style={ rowStyles.bottomButtons }>
+					<button class="button button-link" style={ rowStyles.removeButton } onClick={ removeItem }>Remove</button>
+					<button class="button button-link" style={ rowStyles.closeButton } onClick={ closePicker }>Close</button>
+				</div>
 			</div>
 		)
 	}

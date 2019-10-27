@@ -153,19 +153,8 @@ class PaletteBuilder extends \WP_Customize_Control {
 	 */
 	public function to_json() {
 
-		$this->json['settings'] = array();
-		foreach ( $this->settings as $key => $setting ) {
-			$this->json['settings'][ $key ] = $setting->id;
-		}
-
-		$this->json['type']           = $this->type;
-		$this->json['priority']       = $this->priority;
-		$this->json['active']         = $this->active();
-		$this->json['section']        = $this->section;
-		$this->json['content']        = $this->get_content();
-		$this->json['label']          = $this->label;
-		$this->json['description']    = $this->description;
-		$this->json['instanceNumber'] = $this->instance_number;
+		// Get the basics from the parent class.
+		parent::to_json();
 
 		$strings = ( isset( $this->choices['18n'] ) ) ? $this->choices['18n'] : [];
 
@@ -175,18 +164,11 @@ class PaletteBuilder extends \WP_Customize_Control {
 			'addColor' => esc_html__( 'Add Color', 'kirki-pro' ),
 		] );
 
-		// Start compatibility with Kirki v3.0 API.
 		$this->json['default'] = ( isset( $this->default ) ) ? $this->default : $this->setting->default;
 		$this->json['value'] = $this->value();
 		$this->json['choices'] = $this->choices;
 		$this->json['link'] = $this->get_link();
 		$this->json['id'] = $this->id;
-		$this->json['kirkiOptionType'] = $this->option_type;
-		$this->json['kirkiOptionName'] = $this->option_name;
-		$this->json['css-var'] = $this->css_vars;
-		$this->json['parent_setting'] = $this->parent_setting;
-		$this->json['wrapper_atts'] = $this->wrapper_atts;
-		// End compatibility with Kirki 3.0 API.
 	}
 
 	/**

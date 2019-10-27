@@ -171,7 +171,7 @@ const PaletteBuilderForm = ( props ) => {
 				data-index={ i }
 			/>
 		);
-
+console.log( props );
 		pickers.push(
 			<div class="colorpicker-container" data-index={ i }>
 				<ChromePicker

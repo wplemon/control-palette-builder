@@ -47,16 +47,6 @@ class PaletteBuilder extends Field {
 	protected $control_has_js_template = true;
 
 	/**
-	 * Constructor.
-	 *
-	 * @access public
-	 * @param array $args The field arguments.
-	 */
-	public function __construct( $args ) {
-		parent::__construct( $args );
-	}
-
-	/**
 	 * Filter arguments before creating the setting.
 	 *
 	 * @access public

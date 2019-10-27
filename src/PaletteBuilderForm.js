@@ -141,7 +141,6 @@ const PaletteBuilderForm = ( props ) => {
 					width: '30px',
 					height: '30px',
 					'border-radius': '4px',
-					margin: '0px 6px 6px 0px',
 					border: '1px solid rgba(0, 0, 0, 0.2)',
 				},
 				removeButton: {
@@ -181,7 +180,8 @@ const PaletteBuilderForm = ( props ) => {
 			colors: {
 				display: 'grid',
 				'grid-template-columns': 'repeat(auto-fit, minmax(30px,1fr))',
-				'margin-bottom': '12px'
+				'margin-bottom': '12px',
+				'grid-gap': '6px'
 			},
 			inputsContainer: {
 				display: 'none'

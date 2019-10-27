@@ -159,12 +159,9 @@ class PaletteBuilder extends \WP_Customize_Control {
 		$strings = ( isset( $this->choices['18n'] ) ) ? $this->choices['18n'] : [];
 
 		$this->json['i18n'] = wp_parse_args( $strings,[
-			'auto'        => esc_html__( 'Auto', 'kirki-pro' ),
-			'recommended' => esc_html__( 'Recommended', 'kirki-pro' ),
-			'custom'      => esc_html__( 'Custom', 'kirki-pro' ),
-			'a11yRating'  => esc_html__( 'WCAG Rating', 'kirki-pro' ),
-			'contrastBg'  => esc_html__( 'Contrast with background', 'kirki-pro' ),
-			'contrastSt'  => esc_html__( 'Contrast with surrounding text', 'kirki-pro' ),
+			'close'    => esc_html__( 'Close', 'kirki-pro' ),
+			'remove'   => esc_html__( 'Remove', 'kirki-pro' ),
+			'addColor' => esc_html__( 'Add Color', 'kirki-pro' ),
 		] );
 
 		// Start compatibility with Kirki v3.0 API.

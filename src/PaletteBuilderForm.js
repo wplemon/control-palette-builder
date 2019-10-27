@@ -171,7 +171,7 @@ const PaletteBuilderForm = ( props ) => {
 				data-index={ i }
 			/>
 		);
-console.log( props );
+
 		pickers.push(
 			<div class="colorpicker-container" data-index={ i }>
 				<ChromePicker
@@ -180,8 +180,8 @@ console.log( props );
 					onChangeComplete={ handleChangeComplete }
 				/>
 				<div style={ rowStyles.bottomButtons }>
-					<button class="button button-link" style={ rowStyles.removeButton } onClick={ removeItem }>Remove</button>
-					<button class="button button-link" style={ rowStyles.closeButton } onClick={ closePicker }>Close</button>
+					<button class="button button-link" style={ rowStyles.removeButton } onClick={ removeItem }>{ props.i18n.remove }</button>
+					<button class="button button-link" style={ rowStyles.closeButton } onClick={ closePicker }>{ props.i18n.close }</button>
 				</div>
 			</div>
 		)
@@ -222,7 +222,7 @@ console.log( props );
 					{ pickers }
 				</div>
 
-				<button class="button add-color" onClick={ addRow }>Add Color</button>
+				<button class="button add-color" onClick={ addRow }>{ props.i18n.addColor }</button>
 
 				<input
 					class="palette-picker-hidden-input"

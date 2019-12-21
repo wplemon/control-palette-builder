@@ -148,16 +148,16 @@ const PaletteBuilderForm = ( props ) => {
 					background: item.color,
 					width: '30px',
 					height: '30px',
-					'border-radius': '4px',
+					borderRadius: '4px',
 					border: '1px solid rgba(0, 0, 0, 0.2)',
 				},
 				bottomButtons: {
 					display: 'flex',
-					'justify-content': 'space-between',
+					justifyContent: 'space-between',
 				},
 				removeButton: {
 					color: '#dc3232',
-					'margin-top': '12px'
+					marginTop: '12px'
 				},
 				closeButton: {
 
@@ -192,14 +192,14 @@ const PaletteBuilderForm = ( props ) => {
 			container: {
 				padding: '12px',
 				background: '#fff',
-				'border-radius': '4px',
+				borderRadius: '4px',
 				border: '1px solid rgba(0, 0, 0, 0.2)',
 			},
 			colors: {
 				display: 'grid',
-				'grid-template-columns': 'repeat(auto-fit, minmax(30px,1fr))',
-				'margin-bottom': '12px',
-				'grid-gap': '6px'
+				gridTemplateColumns: 'repeat(auto-fit, minmax(30px,1fr))',
+				marginBottom: '12px',
+				gridGap: '6px'
 			},
 			inputsContainer: {
 				display: 'none'

@@ -5,6 +5,16 @@ import { ChromePicker } from 'react-color';
 
 const PaletteBuilderForm = ( props ) => {
 
+	const getHash = ( input ) => {
+		let hash = 0, len = input.length;
+		for ( let i = 0; i < len; i++ ) {
+			hash = ( ( hash << 5 ) - hash ) + input.charCodeAt( i );
+			hash |= 0; // to 32bit integer.
+		}
+		hash = 0 > hash ? 0 - hash : hash;
+		return hash;
+	}
+
 	/**
 	 * Get existing value.
 	 *
@@ -166,6 +176,7 @@ const PaletteBuilderForm = ( props ) => {
 		} );
 		colors.push(
 			<button
+				key={ getHash( props.control.id + 'button' ) + i }
 				style={ rowStyles.indicator }
 				onClick={ previewButtonClick }
 				data-index={ i }
@@ -173,15 +184,19 @@ const PaletteBuilderForm = ( props ) => {
 		);
 
 		pickers.push(
-			<div class="colorpicker-container" data-index={ i }>
+			<div
+				key={ getHash( props.control.id + 'picker' ) + i }
+				className="colorpicker-container"
+				data-index={ i }
+			>
 				<ChromePicker
 					color={ getColorFromIndex( i ) }
 					disableAlpha={ true }
 					onChangeComplete={ handleChangeComplete }
 				/>
 				<div style={ rowStyles.bottomButtons }>
-					<button class="button button-link" style={ rowStyles.removeButton } onClick={ removeItem }>{ props.i18n.remove }</button>
-					<button class="button button-link" style={ rowStyles.closeButton } onClick={ closePicker }>{ props.i18n.close }</button>
+					<button className="button button-link" style={ rowStyles.removeButton } onClick={ removeItem }>{ props.i18n.remove }</button>
+					<button className="button button-link" style={ rowStyles.closeButton } onClick={ closePicker }>{ props.i18n.close }</button>
 				</div>
 			</div>
 		)
@@ -207,7 +222,6 @@ const PaletteBuilderForm = ( props ) => {
 		}
 	} );
 
-
 	return (
 		<div>
 			<div>
@@ -218,14 +232,14 @@ const PaletteBuilderForm = ( props ) => {
 
 			<div style={ styles.container }>
 				<div style={ styles.colors }>{ colors }</div>
-				<div class="palette-picker-inputs-container" style={ styles.inputsContainer }>
+				<div className="palette-picker-inputs-container" style={ styles.inputsContainer }>
 					{ pickers }
 				</div>
 
-				<button class="button add-color" onClick={ addRow }>{ props.i18n.addColor }</button>
+				<button className="button add-color" onClick={ addRow }>{ props.i18n.addColor }</button>
 
 				<input
-					class="palette-picker-hidden-input"
+					className="palette-picker-hidden-input"
 					type="hidden"
 					data-customize-setting-link={ props.customizerSetting.id }
 					value={ JSON.stringify( getVal() ).replace( /'/g, '&#39' ).replace( /"/g, '&#39' ) }
